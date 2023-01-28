@@ -8,7 +8,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Navbar />
-      <h1 className="text-3xl font-bold">Homepage</h1>
+      <h1 className="text-3xl font-bold">Welcome</h1>
       <Footer />
     </>
   );
