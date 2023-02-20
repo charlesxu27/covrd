@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import Link from 'next/link'
+import Link from "next/link";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useState } from "react";
@@ -46,7 +46,10 @@ const Home: NextPage = () => {
                   Get your cover letter in seconds. It's that easy.
                 </p>
                 <div className="mt-10 flex items-center justify-center gap-x-6">
-                  <Link href="/register" className="rounded-md bg-indigo-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                  <Link
+                    href="/register"
+                    className="rounded-md bg-indigo-600 px-3.5 py-1.5 text-base font-semibold leading-7 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >
                     Try for Free
                   </Link>
                   <Link
@@ -58,18 +61,18 @@ const Home: NextPage = () => {
                 </div>
               </div>
             </div>
-            <div className="mx-8 mb-10 grid gap-2 lg:grid-cols-3">
+            <div className="pb-20 flex justify-center gap-10">
               {posts.map((items, key) => (
                 <div
-                  className="w-full rounded-lg shadow-md lg:max-w-sm"
+                  className="w-full rounded-lg shadow-md lg:max-w-sm bg-gray-100"
                   key={key}
                 >
                   <img
-                    className="object-cover w-full h-48"
+                    className="object-cover w-full h-48 rounded-lg"
                     src={items.img}
                     alt="image"
                   />
-                  <div className="p-4">
+                  <div className="p-4 ">
                     <h4 className="text-l font-semibold text-blue-600">
                       {items.title}
                     </h4>
