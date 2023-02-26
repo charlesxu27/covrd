@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CandidateForm from "./CandidateForm";
 import HiringManagerForm from "./HiringManagerForm";
+import JobForm from "./JobForm";
 
 export default function MainForm() {
   interface FormData {
@@ -16,7 +17,7 @@ export default function MainForm() {
     zipcode: string
   }
 
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState(3)
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
@@ -44,17 +45,8 @@ export default function MainForm() {
     case 2:
       return <HiringManagerForm formData={formData} setFormData={setFormData} nextStep={nextStep} prevStep={prevStep} />;
     case 3:
-      return <ResumeForm formData={formData} setFormData={setFormData} prevStep={prevStep} />;
+      return <JobForm formData={formData} setFormData={setFormData} prevStep={prevStep} />;
   }
 
 
-//   return (
-//     <>
-//       <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
-//         <h2 className="text-4xl font-bold text-indigo-500">
-//           Let's get started!
-//         </h2>
-//       </div>
-//     </>
-//   );
 }
