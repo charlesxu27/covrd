@@ -5,9 +5,7 @@ interface jobFormProps {
   prevStep: () => void;
 }
 
-export default function JobForm({
-  prevStep: prevStep,
-}: jobFormProps) {
+export default function JobForm({ prevStep: prevStep }: jobFormProps) {
   const { formData, setFormData } = useFormContext();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,7 +14,7 @@ export default function JobForm({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(formData)
+    console.log(formData);
   };
 
   const handleTextArea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
