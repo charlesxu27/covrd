@@ -5,19 +5,19 @@ import JobForm from "./JobForm";
 
 export default function MainForm() {
   interface FormData {
-    firstName: string,
-    lastName: string,
-    resumeText: string,
-    hiringManagerName: string,
-    companyName: string,
-    address1: string,
-    address2: string,
-    city: string,
-    state: string,
-    zipcode: string
+    firstName: string;
+    lastName: string;
+    resumeText: string;
+    hiringManagerName: string;
+    companyName: string;
+    address1: string;
+    address2: string;
+    city: string;
+    state: string;
+    zipcode: string;
   }
 
-  const [step, setStep] = useState(3)
+  const [step, setStep] = useState(1);
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     lastName: "",
@@ -28,7 +28,7 @@ export default function MainForm() {
     address2: "",
     city: "",
     state: "",
-    zipcode: ""
+    zipcode: "",
   });
 
   const nextStep = () => {
@@ -41,12 +41,29 @@ export default function MainForm() {
 
   switch (step) {
     case 1:
-      return <CandidateForm formData={formData} setFormData={setFormData} nextStep={nextStep} />;
+      return (
+        <CandidateForm
+          formData={formData}
+          setFormData={setFormData}
+          nextStep={nextStep}
+        />
+      );
     case 2:
-      return <HiringManagerForm formData={formData} setFormData={setFormData} nextStep={nextStep} prevStep={prevStep} />;
+      return (
+        <HiringManagerForm
+          formData={formData}
+          setFormData={setFormData}
+          nextStep={nextStep}
+          prevStep={prevStep}
+        />
+      );
     case 3:
-      return <JobForm formData={formData} setFormData={setFormData} prevStep={prevStep} />;
+      return (
+        <JobForm
+          formData={formData}
+          setFormData={setFormData}
+          prevStep={prevStep}
+        />
+      );
   }
-
-
 }
