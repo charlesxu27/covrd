@@ -44,6 +44,22 @@ export default function HiringManagerForm({
           </div>
           <div className="mt-4">
             <label className="block text-sm font-medium text-gray-700">
+              Company
+            </label>
+            <div className="flex flex-col items-start">
+              <input
+                type="text"
+                name="companyName"
+                className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                placeholder="Microsoft"
+                value={formData.companyName}
+                required
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div className="mt-4">
+            <label className="block text-sm font-medium text-gray-700">
               Address Line 1
             </label>
             <div className="flex flex-col items-start">
