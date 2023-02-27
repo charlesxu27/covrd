@@ -5,7 +5,9 @@ interface candidateFormProps {
   nextStep: () => void;
 }
 
-export default function CandidateForm({ nextStep: onNext }: candidateFormProps) {
+export default function CandidateForm({
+  nextStep: nextStep,
+}: candidateFormProps) {
   const { formData, setFormData } = useFormContext();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,17 +17,17 @@ export default function CandidateForm({ nextStep: onNext }: candidateFormProps) 
   const handleTextArea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onNext();
+    nextStep();
   };
 
   return (
     <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
       <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-md sm:rounded-lg">
         <h3 className="font-bold text-xl">Candidate Info</h3>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="mt-4">
             <label className="block text-sm font-medium text-gray-700 undefined">
               Your Name
@@ -70,6 +72,12 @@ export default function CandidateForm({ nextStep: onNext }: candidateFormProps) 
               />
             </div>
           </div>
+          <button
+            type="submit"
+            className="block w-full mt-1 border-gray-300 bg-indigo-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+          >
+            Next
+          </button>
         </form>
       </div>
     </div>

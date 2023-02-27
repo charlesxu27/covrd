@@ -1,6 +1,27 @@
 import React from "react";
+import { useFormContext } from "../contexts/FormContext";
 
-export default function HiringManagerForm() {
+interface hiringManagerFormProps {
+  nextStep: () => void;
+  prevStep: () => void;
+}
+
+export default function HiringManagerForm({
+  nextStep: nextStep,
+  prevStep: prevStep,
+}: hiringManagerFormProps) {
+  const { formData, setFormData } = useFormContext();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    nextStep();
+    prevStep();
+  };
+
   return (
     <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
       <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-md sm:rounded-lg">
