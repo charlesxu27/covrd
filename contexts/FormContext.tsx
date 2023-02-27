@@ -1,6 +1,6 @@
-import { createContext } from 'react';
+import React, { createContext, useContext, useState } from "react";
 
-export interface FormDataInterface {
+interface FormState {
   firstName: string;
   lastName: string;
   resumeText: string;
@@ -15,17 +15,54 @@ export interface FormDataInterface {
   jobDescription: string;
 }
 
-export const FormContext = createContext<FormDataInterface>({
-  firstName: "",
-  lastName: "",
-  resumeText: "",
-  hiringManagerName: "",
-  companyName: "",
-  address1: "",
-  address2: "",
-  city: "",
-  state: "",
-  zipcode: "",
-  jobTitle: "",
-  jobDescription: ""
+interface FormContextProps {
+  formState: FormState;
+  setFormState: React.Dispatch<React.SetStateAction<FormState>>;
+}
+
+export const FormContext = createContext<FormContextProps>({
+  formState: {
+    firstName: "",
+    lastName: "",
+    resumeText: "",
+    hiringManagerName: "",
+    companyName: "",
+    address1: "",
+    address2: "",
+    city: "",
+    state: "",
+    zipcode: "",
+    jobTitle: "",
+    jobDescription: "",
+  },
+  setFormState: () => {},
 });
+
+export const useFormContext = () => useContext(FormContext);
+
+export const FormProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const [formState, setFormState] = useState<FormState>({
+    firstName: "",
+    lastName: "",
+    resumeText: "",
+    hiringManagerName: "",
+    companyName: "",
+    address1: "",
+    address2: "",
+    city: "",
+    state: "",
+    zipcode: "",
+    jobTitle: "",
+    jobDescription: "",
+  });
+
+  return (
+    <FormContext.Provider value={{ formState, setFormState }}>
+      {children}
+    </FormContext.Provider>
+  );
+};
+
+export default FormProvider;

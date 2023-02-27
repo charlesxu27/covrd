@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   };
 
   return (
-    <FormContext.Provider value={formData}>
+    <FormContext.Provider value={formData, setFormData}>
       <Component {...pageProps} />
     </FormContext.Provider>
   );

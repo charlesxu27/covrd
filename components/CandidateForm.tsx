@@ -1,17 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import { useState } from "react";
+import { FormContext } from "../contexts/FormContext";
 
-export default function CandidateForm() {
-  const [formValues, setFormValues] = useState({
-    firstName: "",
-    lastName: "",
-    resumeText: "",
-  });
+export default function CandidateForm(props: any) {
 
-  function handleChange(event: any) {
+  const handleChange = (event: any) => {
     const { name, value } = event.target;
-    setFormValues({ ...formValues, [name]: value });
+    setFormCon({ ...formValues, [name]: value });
     console.log(formValues);
   }
 
