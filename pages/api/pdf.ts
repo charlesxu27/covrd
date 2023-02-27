@@ -2,7 +2,7 @@ import axios from "axios";
 import type { NextApiRequest, NextApiResponse } from "next";
 import FormProvider from "../../contexts/FormContext";
 
-export default async function handler(
+export default async function pdfHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
