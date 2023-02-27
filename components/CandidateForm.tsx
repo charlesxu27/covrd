@@ -1,15 +1,25 @@
 import React from "react";
-import Link from "next/link";
-import { useState } from "react";
-import { FormContext } from "../contexts/FormContext";
+import { useFormContext } from "../contexts/FormContext";
 
-export default function CandidateForm(props: any) {
+interface candidateFormProps {
+  nextStep: () => void;
+}
 
-  const handleChange = (event: any) => {
-    const { name, value } = event.target;
-    setFormCon({ ...formValues, [name]: value });
-    console.log(formValues);
-  }
+export default function CandidateForm({ nextStep: onNext }: candidateFormProps) {
+  const { formData, setFormData } = useFormContext();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleTextArea = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    onNext();
+  };
 
   return (
     <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
@@ -26,7 +36,7 @@ export default function CandidateForm(props: any) {
                   type="text"
                   name="firstName"
                   placeholder="John"
-                  value={formValues.firstName}
+                  value={formData.firstName}
                   onChange={handleChange}
                   required
                   className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -37,7 +47,7 @@ export default function CandidateForm(props: any) {
                   type="text"
                   name="lastName"
                   placeholder="Smith"
-                  value={formValues.lastName}
+                  value={formData.lastName}
                   onChange={handleChange}
                   required
                   className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -54,8 +64,8 @@ export default function CandidateForm(props: any) {
                 name="resumeText"
                 className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 rows={10}
-                value={formValues.resumeText}
-                onChange={handleChange}
+                value={formData.resumeText}
+                onChange={handleTextArea}
                 placeholder="Copy and paste your resume info. This will help us personalize your cover letter!"
               />
             </div>

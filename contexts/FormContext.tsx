@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 
-interface FormState {
+export interface FormInterface {
   firstName: string;
   lastName: string;
   resumeText: string;
@@ -16,12 +16,12 @@ interface FormState {
 }
 
 interface FormContextProps {
-  formState: FormState;
-  setFormState: React.Dispatch<React.SetStateAction<FormState>>;
+  formData: FormInterface;
+  setFormData: (data: FormInterface) => void;
 }
 
 export const FormContext = createContext<FormContextProps>({
-  formState: {
+  formData: {
     firstName: "",
     lastName: "",
     resumeText: "",
@@ -35,7 +35,7 @@ export const FormContext = createContext<FormContextProps>({
     jobTitle: "",
     jobDescription: "",
   },
-  setFormState: () => {},
+  setFormData: () => {},
 });
 
 export const useFormContext = () => useContext(FormContext);
@@ -43,7 +43,7 @@ export const useFormContext = () => useContext(FormContext);
 export const FormProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [formState, setFormState] = useState<FormState>({
+  const [formData, setFormData] = useState<FormInterface>({
     firstName: "",
     lastName: "",
     resumeText: "",
@@ -59,7 +59,7 @@ export const FormProvider: React.FC<{ children: React.ReactNode }> = ({
   });
 
   return (
-    <FormContext.Provider value={{ formState, setFormState }}>
+    <FormContext.Provider value={{ formData, setFormData }}>
       {children}
     </FormContext.Provider>
   );
