@@ -13,12 +13,12 @@ export default async function pdfHandler(
   }
 
   const data: any = {
-    userName: "Molly Doe",
-    hiringManagerName: "Rick Smith",
-    userAddress: "1701 SW Western Blvd, Corvallis, OR, 97331",
-    companyAddress: "1500 SW Jeffeson St, Corvallis, OR, 97331",
+    userName: "John Smith",
+    hiringManagerName: "Steve Jobs",
+    companyName: "Apple",
+    companyAddress: "Apple Park, Cupertino, CA, 99999",
     letterContent:
-      "I am writing to express my interest in the IT job at Oregon State University. As a highly motivated and detail-oriented individual, I am confident that I have the skills and experience needed to excel in this role. With a strong background in computer science and a passion for technology, I am eager to contribute to the university's mission and support its students and faculty. I am particularly impressed with Oregon State University's commitment to using technology to enhance education and drive innovation. I am eager to join this dynamic and forward-thinking community and help support the university's IT needs. Thank you for considering my application. I look forward to the opportunity to further discuss my qualifications and how I can be of value to your team.",
+      "I am writing to express my deep interest in joining Apple as a software engineer. As a current student at Oregon State University, I have developed a solid foundation in computer science and programming, particularly in Python. Over the years, I have taken on numerous challenging projects that have helped me hone my skills and build a strong foundation for a career in software engineering. \n\nOne of the most notable projects that I have worked on is creating a board game with a GUI using Python. This project involved a complex set of requirements that forced me to not only utilize my programming skills but also hone my problem-solving ability. Through this project, I learned the importance of working through tough problems and persevering even when solutions don’t come quickly. \n\nIn addition, I have participated in various web development hackathons, which have allowed me to program with a team and gain real-world experience in a fast-paced, collaborative environment. I was part of a team that built an iOS app that tracks daily water intake, which required us to work together closely to deliver the project on time. This experience has taught me how to collaborate effectively with others, communicate complex technical ideas, and make meaningful contributions to a team effort. \n\nI am confident that my skills and experience would make me a valuable addition to Apple as a software engineer. I am excited about the opportunity to apply my talents to challenging projects and to work alongside some of the most innovative and forward-thinking professionals in the industry. Thank you for your time and consideration. I look forward to the opportunity to further discuss my qualifications with you.",
   };
 
   // Define the axios request config
