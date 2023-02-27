@@ -19,61 +19,31 @@ export default function HiringManagerForm({
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     nextStep();
-    prevStep();
   };
 
   return (
     <div className="flex flex-col items-center min-h-screen pt-6 sm:justify-center sm:pt-0 bg-gray-50">
       <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-md sm:rounded-lg">
-        <form>
+        <form onSubmit={handleSubmit}>
           <h3 className="font-bold text-xl">Hiring Manager Info</h3>
           <div className="mt-4">
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-700 undefined"
-            >
-              Your Name
-            </label>
-            <div className="flex flex-col items-start sm:flex-row">
-              <div className="w-full sm:w-1/2 sm:pr-2">
-                <input
-                  type="text"
-                  name="address_line_1"
-                  className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                  placeholder="John"
-                />
-              </div>
-              <div className="w-full mt-4 sm:w-1/2 sm:mt-0 sm:pl-2">
-                <input
-                  type="text"
-                  name="address_line_2"
-                  className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                  placeholder="Smith"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="mt-4">
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Email
+            <label className="block text-sm font-medium text-gray-700">
+              Full Name
             </label>
             <div className="flex flex-col items-start">
               <input
-                type="email"
-                name="email"
+                type="text"
+                name="hiringManagerName"
                 className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                placeholder="sample@gmail.com"
+                placeholder="Bill Gates"
+                value={formData.hiringManagerName}
+                required
+                onChange={handleChange}
               />
             </div>
           </div>
           <div className="mt-4">
-            <label
-              htmlFor="address1"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label className="block text-sm font-medium text-gray-700">
               Address Line 1
             </label>
             <div className="flex flex-col items-start">
@@ -81,14 +51,14 @@ export default function HiringManagerForm({
                 type="text"
                 name="address1"
                 className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                value={formData.address1}
+                required
+                onChange={handleChange}
               />
             </div>
           </div>
           <div className="mt-4">
-            <label
-              htmlFor="address2"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label className="block text-sm font-medium text-gray-700">
               Address Line 2 (Optional)
             </label>
             <div className="flex flex-col items-start">
@@ -96,14 +66,13 @@ export default function HiringManagerForm({
                 type="text"
                 name="address2"
                 className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                value={formData.address2}
+                onChange={handleChange}
               />
             </div>
           </div>
           <div className="mt-4">
-            <label
-              htmlFor="city"
-              className="block text-sm font-medium text-gray-700"
-            >
+            <label className="block text-sm font-medium text-gray-700">
               City
             </label>
             <div className="flex flex-col items-start">
@@ -111,15 +80,15 @@ export default function HiringManagerForm({
                 type="text"
                 name="city"
                 className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                value={formData.city}
+                required
+                onChange={handleChange}
               />
             </div>
           </div>
           <div className="flex">
             <div className="mt-4 flex flex-col">
-              <label
-                htmlFor="state"
-                className="block text-sm font-medium text-gray-700 undefined"
-              >
+              <label className="block text-sm font-medium text-gray-700 undefined">
                 State
               </label>
               <div className="flex flex-col items-start sm:flex-row">
@@ -128,27 +97,45 @@ export default function HiringManagerForm({
                     type="text"
                     name="state"
                     className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    value={formData.state}
+                    required
+                    onChange={handleChange}
                   />
                 </div>
               </div>
             </div>
             <div className="mt-4 flex flex-col">
-              <label
-                htmlFor="zip"
-                className="block text-sm font-medium text-gray-700 undefined"
-              >
+              <label className="block text-sm font-medium text-gray-700 undefined">
                 Zip Code
               </label>
               <div className="flex flex-col items-start sm:flex-row">
                 <div className="w-full sm:w-1/2 sm:pr-2">
                   <input
                     type="text"
-                    name="zip"
+                    name="zipcode"
                     className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    value={formData.zipcode}
+                    required
+                    onChange={handleChange}
                   />
                 </div>
               </div>
             </div>
+          </div>
+          <div className="flex justify-between">
+            <button
+              type="button"
+              className="block w-full mt-1 mr-2 border-gray-300 bg-indigo-100 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+              onClick={prevStep}
+            >
+              Back
+            </button>
+            <button
+              type="submit"
+              className="block w-full mt-1 ml-2 border-gray-300 bg-indigo-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            >
+              Next
+            </button>
           </div>
         </form>
       </div>
