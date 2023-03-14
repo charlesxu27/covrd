@@ -30,15 +30,12 @@ export default async function pdfHandler(
   };
 
   try {
-    const response = await axios.post("http://localhost:5555/pdf", data); // add config?
+    const response = await axios.post("http://localhost:5555/pdf", FormData); // add config?
 
     // Create a blob object from the binary array response
-    const buffer =  Buffer.from(response.data, "binary");
+    const buffer = Buffer.from(response.data, "binary");
 
-    res.setHeader(
-      "Content-Type",
-      "application/pdf",
-    );
+    res.setHeader("Content-Type", "application/pdf");
     res.setHeader(
       "Content-Disposition",
       'attachment; filename="coverletter.pdf"'

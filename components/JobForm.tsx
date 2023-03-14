@@ -43,6 +43,7 @@ export default function JobForm({ prevStep: prevStep }: jobFormProps) {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log("Submitting form...")
     console.log(formData);
     await fetchPdf();
     downloadPdf();

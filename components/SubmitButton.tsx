@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function SubmitButton() {
   const [isLoading, setIsLoading] = useState(false);
@@ -8,13 +8,13 @@ export default function SubmitButton() {
 
     try {
       // Make the fetch request to the API route
-      const response = await fetch('/api/pdf', {
-        method: 'POST',
+      const response = await fetch("/api/pdf", {
+        method: "POST",
         body: JSON.stringify({
-          // Your JSON data here
+          FormData,
         }),
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
       });
 
@@ -26,14 +26,14 @@ export default function SubmitButton() {
 
       // Use the URL object to display the PDF in an iframe or redirect the user to download the PDF
       // Example 1: Display the PDF in an iframe
-      const iframe = document.createElement('iframe');
+      const iframe = document.createElement("iframe");
       iframe.src = url;
       document.body.appendChild(iframe);
 
       // Example 2: Redirect the user to download the PDF
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.href = url;
-      link.download = 'example.pdf';
+      link.download = "example.pdf";
       link.click();
 
       setIsLoading(false);
@@ -46,7 +46,7 @@ export default function SubmitButton() {
   return (
     <div>
       <button onClick={handleClick} disabled={isLoading}>
-        {isLoading ? 'Loading...' : 'Download PDF'}
+        {isLoading ? "Loading..." : "Download PDF"}
       </button>
     </div>
   );
